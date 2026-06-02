@@ -35,6 +35,11 @@ async def validation_exception_handler(request: Request, exc: ValidationError):
     return JSONResponse(status_code=422, content={"error": str(exc)})
 
 
+@app.get("/")
+def root():
+    return {"message": "Inventory API Running Successfully"}
+
+
 @app.get("/api/healthz", tags=["health"])
 def health_check():
     return {"status": "ok"}
